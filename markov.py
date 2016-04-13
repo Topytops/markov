@@ -32,7 +32,7 @@ def make_chains(text_string):
    
     
     for i in range(len(words) - 1):
-        chains[i] = words[i], words[i + 1]
+        chains = (words[i], words[i + 1]), [words[i + 2]]
         #, words[i +2]
 
     return chains
