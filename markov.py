@@ -31,11 +31,16 @@ def make_chains(text_string):
     words = text_string.split()
    
     
-    for i in range(len(words) - 1):
-        chains = (words[i], words[i + 1]), [words[i + 2]]
-        #, words[i +2]
+    for i in range(len(words) - 2): #Looping over the string of text in order to pull out the tuples, which are our Keys
+        our_tuples = words[i], words[i + 1] #Our Tuples!
+        if our_tuples not in chains:    
+            chains[our_tuples] = [words[i + 2]] #Adding the value, which is the third item in text
+        else:
+            chains[our_tuples].append(words[i + 2])
+    print chains
 
-    return chains
+        
+
 
 
 def make_text(chains):
