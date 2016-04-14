@@ -37,7 +37,7 @@ def make_chains(text_string):
             chains[our_tuples] = [words[i + 2]] #Adding the value, which is the third item in text
         else:
             chains[our_tuples].append(words[i + 2])
-    print chains
+    return chains
 
         
 
@@ -45,10 +45,14 @@ def make_chains(text_string):
 
 def make_text(chains):
     """Takes dictionary of markov chains; returns random text."""
-
-    text = ""
-
-    # your code goes here
+    
+    bi_gram = choice(chains.keys()) #Chose the random keys to determine our first bi-gram
+    text = bi_gram[0] + ' ' + bi_gram[1]    #Created the new tuple from the random chosen bi-gram
+    while bi_gram in chains:    #Made while loop to loop through the dicitionary, named chains
+        chosen_value = choice(chains[bi_gram]) #Randomly selecting the first value and naming it to use in the loop
+        text += ' ' + chosen_value #Created the new key based on the randomly selected value
+        bi_gram = (bi_gram[1], chosen_value) #Next tuple to use in the loop
+    
 
     return text
 
